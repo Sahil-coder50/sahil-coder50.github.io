@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinnie — Backend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F7F5;
+    --surface: #FFFFFF;
+    --border: #E3E6E1;
+    --border-soft: #ECEEEA;
+    --ink: #1E2320;
+    --ink-dim: #5A625B;
+    --ink-faint: #8B948B;
+    --teal: #2B6E5E;
+    --teal-soft: #E8F1EC;
+    --slate: #4A5A72;
+    --slate-soft: #EBEEF3;
+    --amber: #B4791F;
+    --amber-soft: #F5EAD8;
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background: var(--teal-soft); color: var(--teal); }
+
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+  /* NAV */
+  nav{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(246,247,245,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .brand{ font-family: var(--serif); font-weight:600; font-size:19px; letter-spacing: -0.01em; }
+  .brand span{ color: var(--teal); }
+  .navlinks{ display:flex; gap:30px; font-size:14px; color: var(--ink-dim); }
+  .navlinks a{ transition: color .15s; }
+  .navlinks a:hover{ color: var(--teal); }
+  .nav-cta{
+    font-size:13.5px; font-weight:600; color: var(--surface);
+    background: var(--ink); padding:8px 16px; border-radius:7px;
+    transition: background .15s;
+  }
+  .nav-cta:hover{ background: var(--teal); }
+
+  /* HERO */
+  header.hero{ padding: 76px 0 84px; }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: start;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--mono); font-size:12px; font-weight:500;
+    color: var(--teal); background: var(--teal-soft);
+    padding: 5px 11px; border-radius: 20px; margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background: var(--teal); }
+
+  h1.headline{
+    font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 4.4vw, 50px);
+    line-height: 1.14; letter-spacing: -0.015em; color: var(--ink);
+    margin-bottom: 20px;
+  }
+  h1.headline em{ font-style: italic; color: var(--teal); }
+
+  .sub{ font-size: 16px; color: var(--ink-dim); max-width: 480px; margin-bottom: 30px; }
+  .sub strong{ color: var(--ink); font-weight: 600; }
+
+  .cta-row{ display:flex; gap:14px; flex-wrap: wrap; margin-bottom: 32px; }
+  .btn-primary, .btn-secondary{
+    font-size: 14px; font-weight: 600; padding: 11px 20px; border-radius: 8px;
+    transition: all .15s;
+  }
+  .btn-primary{ background: var(--ink); color: var(--surface); }
+  .btn-primary:hover{ background: var(--teal); }
+  .btn-secondary{ background: var(--surface); color: var(--ink); border: 1px solid var(--border); }
+  .btn-secondary:hover{ border-color: var(--teal); color: var(--teal); }
+
+  .meta-row{ display:flex; gap:20px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-faint); }
+  .meta-row a:hover{ color: var(--teal); }
+  .meta-row .sep{ color: var(--border); }
+
+  /* STATUS CARD */
+  .status-card{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 22px 18px;
+    box-shadow: 0 1px 2px rgba(30,35,32,0.03), 0 12px 32px -18px rgba(30,35,32,0.18);
+  }
+  .status-card-head{
+    display:flex; justify-content: space-between; align-items:baseline;
+    margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border-soft);
+  }
+  .status-card-head .label{ font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+  .status-card-head .time{ font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+  .status-row{
+    display:flex; align-items:center; justify-content: space-between;
+    padding: 9px 0; font-size: 13.5px;
+  }
+  .status-row .name{ display:flex; align-items:center; gap: 9px; color: var(--ink); }
+  .status-row .name .stack{ font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+  .status-dot{ width:7px; height:7px; border-radius:50%; background: var(--teal); flex-shrink:0; }
+  .status-tag{
+    font-family: var(--mono); font-size: 11px; color: var(--teal);
+    background: var(--teal-soft); padding: 2px 8px; border-radius: 10px;
+  }
+  .status-caption{
+    margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border-soft);
+    font-size: 11.5px; color: var(--ink-faint); font-style: italic;
+  }
+
+  /* SECTIONS */
+  section{ padding: 66px 0; border-top: 1px solid var(--border-soft); }
+  .sec-eyebrow{
+    font-family: var(--mono); font-size: 12px; color: var(--teal);
+    letter-spacing: 0.04em; margin-bottom: 12px;
+  }
+  h2.sec-title{
+    font-family: var(--serif); font-size: 30px; font-weight: 600;
+    letter-spacing: -0.01em; margin-bottom: 30px; color: var(--ink);
+  }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .about-text p{ font-size: 15.5px; color: var(--ink-dim); margin-bottom: 14px; max-width: 480px; }
+  .about-text strong{ color: var(--ink); font-weight: 600; }
+  .stack-list{ display:flex; flex-direction: column; gap:0; }
+  .stack-cat{
+    display:flex; justify-content: space-between; padding: 12px 0;
+    border-bottom: 1px solid var(--border-soft); font-size: 14px;
+  }
+  .stack-cat:first-child{ border-top: 1px solid var(--border-soft); }
+  .stack-cat .k{ color: var(--ink-faint); font-family: var(--mono); font-size: 12px; }
+  .stack-cat .v{ color: var(--ink); text-align: right; max-width: 260px; }
+
+  /* PROJECTS */
+  .project-card{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 26px 28px; margin-bottom: 20px;
+  }
+  .project-top{
+    display:flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px; margin-bottom: 12px; flex-wrap: wrap;
+  }
+  .project-title{ font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--ink); }
+  .project-status{
+    font-family: var(--mono); font-size: 11px; color: var(--amber);
+    background: var(--amber-soft); padding: 4px 10px; border-radius: 12px;
+    white-space: nowrap;
+  }
+  .project-pitch{ font-size: 14.5px; color: var(--ink-dim); max-width: 600px; margin-bottom: 16px; }
+  .flow-line{
+    font-family: var(--mono); font-size: 12px; color: var(--slate);
+    background: var(--slate-soft); display:inline-block;
+    padding: 6px 12px; border-radius: 7px; margin-bottom: 16px;
+  }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom: 18px; }
+  .tag{
+    font-size: 12px; color: var(--ink-dim); background: var(--bg);
+    border: 1px solid var(--border-soft); padding: 4px 10px; border-radius: 6px;
+  }
+  .project-links{ display:flex; gap: 22px; font-size: 13.5px; font-weight: 600; }
+  .project-links a{ color: var(--teal); }
+  .project-links a:hover{ text-decoration: underline; }
+  .project-links .disabled{ color: var(--ink-faint); font-weight: 500; }
+
+  /* WRITING */
+  .post-list{ display:flex; flex-direction:column; }
+  .post-row{
+    display:flex; justify-content: space-between; align-items:center; gap: 16px;
+    padding: 16px 0; border-bottom: 1px solid var(--border-soft);
+  }
+  .post-row:first-child{ border-top: 1px solid var(--border-soft); }
+  .post-row .ptitle{ font-size: 15px; color: var(--ink); font-weight: 500; }
+  .post-row .pmeta{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); white-space: nowrap; }
+  .hint{ margin-top: 16px; font-size: 12.5px; color: var(--ink-faint); font-style: italic; }
+
+  /* CONTACT */
+  .contact-card{
+    background: var(--ink); color: var(--surface);
+    border-radius: 16px; padding: 44px 40px;
+    display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap; gap: 24px;
+  }
+  .contact-card h3{ font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+  .contact-card p{ color: #B8C2BC; font-size: 14.5px; max-width: 340px; }
+  .contact-links{ display:flex; gap: 14px; flex-wrap: wrap; }
+  .contact-links a{
+    font-size: 13.5px; font-weight: 600; padding: 10px 18px; border-radius: 8px;
+    background: rgba(255,255,255,0.1); color: var(--surface); transition: background .15s;
+  }
+  .contact-links a:hover{ background: rgba(255,255,255,0.18); }
+  .contact-links a.primary{ background: var(--surface); color: var(--ink); }
+  .contact-links a.primary:hover{ background: var(--teal-soft); }
+
+  footer{
+    text-align:center; padding: 34px 0 46px; font-size: 12.5px; color: var(--ink-faint);
+  }
+
+  @media (max-width: 760px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .navlinks{ display:none; }
+    .contact-card{ flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">vinnie<span>.dev</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Open to Junior Django Developer roles</div>
+      <h1 class="headline">I build backend systems that stay <em>calm</em> under load.</h1>
+      <p class="sub">
+        Backend Developer at <strong>Weboapp Discovery Pvt. Ltd.</strong>, New Delhi — 10 months shipping
+        production APIs, background job pipelines, and real-time features with Django.
+      </p>
+      <div class="cta-row">
+        <a href="#projects" class="btn-primary">View projects</a>
+        <a href="#" class="btn-secondary">Download résumé</a>
+      </div>
+      <div class="meta-row">
+        <a href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a>
+        <span class="sep">·</span>
+        <a href="https://linkedin.com/in/YOUR-USERNAME" target="_blank">LinkedIn</a>
+        <span class="sep">·</span>
+        <a href="mailto:you@example.com">you@example.com</a>
+        <span class="sep">·</span>
+        <span>New Delhi, India</span>
+      </div>
+    </div>
+
+    <div class="status-card">
+      <div class="status-card-head">
+        <span class="label">system.status</span>
+        <span class="time">what I work with daily</span>
+      </div>
+
+      <div class="status-row">
+        <span class="name"><span class="status-dot"></span>API layer <span class="stack">DRF</span></span>
+        <span class="status-tag">operational</span>
+      </div>
+      <div class="status-row">
+        <span class="name"><span class="status-dot"></span>Task queue <span class="stack">Celery</span></span>
+        <span class="status-tag">operational</span>
+      </div>
+      <div class="status-row">
+        <span class="name"><span class="status-dot"></span>Cache <span class="stack">Redis</span></span>
+        <span class="status-tag">operational</span>
+      </div>
+      <div class="status-row">
+        <span class="name"><span class="status-dot"></span>Event stream <span class="stack">Kafka</span></span>
+        <span class="status-tag">operational</span>
+      </div>
+      <div class="status-row">
+        <span class="name"><span class="status-dot"></span>Realtime <span class="stack">Channels/WS</span></span>
+        <span class="status-tag">operational</span>
+      </div>
+
+      <div class="status-caption">A snapshot of the stack I use in production — not live monitoring data.</div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <div class="sec-eyebrow">About</div>
+      <h2 class="sec-title">Backend by choice</h2>
+      <p>
+        I like the parts of a product that don't show up in a demo — <strong>queueing, caching, and things not
+        failing silently at 2am.</strong> Over the last 10 months I've worked across three production systems: a CRM
+        backend, a ticket management platform, and a project management tool.
+      </p>
+      <p>
+        The projects on this page are rebuilt, open-source versions of that production work — same architecture
+        decisions, documented and testable.
+      </p>
+    </div>
+    <div class="stack-list">
+      <div class="stack-cat"><span class="k">core</span><span class="v">Python, Django, Django REST Framework</span></div>
+      <div class="stack-cat"><span class="k">data</span><span class="v">PostgreSQL, Redis</span></div>
+      <div class="stack-cat"><span class="k">async</span><span class="v">Celery, Apache Kafka</span></div>
+      <div class="stack-cat"><span class="k">realtime</span><span class="v">Django Channels, WebSockets</span></div>
+      <div class="stack-cat"><span class="k">infra</span><span class="v">Docker, GitHub Actions</span></div>
+      <div class="stack-cat"><span class="k">testing</span><span class="v">pytest</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-eyebrow">Projects</div>
+    <h2 class="sec-title">Selected work</h2>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-title">ConnectCRM API</span>
+        <span class="project-status">not yet deployed</span>
+      </div>
+      <p class="project-pitch">
+        A multi-tenant CRM backend for managing leads, contacts, and deal pipelines, with role-based access
+        control and async notifications so the API stays fast under load.
+      </p>
+      <div class="flow-line">client → DRF → Celery → Redis → Kafka (activity events)</div>
+      <div class="project-tags">
+        <span class="tag">Django REST Framework</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Celery + Redis</span>
+        <span class="tag">Docker</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/YOUR-USERNAME/connect-crm-api" target="_blank">View source →</a>
+        <span class="disabled">Live demo (add once deployed)</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-title">DeskFlow</span>
+        <span class="project-status">not yet deployed</span>
+      </div>
+      <p class="project-pitch">
+        A support ticket system with live status updates over WebSockets — agents see changes the moment they
+        happen instead of polling for them.
+      </p>
+      <div class="flow-line">client ⇄ Channels (WS) → Celery (SLA reminders) → Redis</div>
+      <div class="project-tags">
+        <span class="tag">Django Channels</span>
+        <span class="tag">DRF</span>
+        <span class="tag">Celery</span>
+        <span class="tag">pytest</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/YOUR-USERNAME/deskflow" target="_blank">View source →</a>
+        <span class="disabled">Live demo (add once deployed)</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-title">SprintBoard</span>
+        <span class="project-status">not yet deployed</span>
+      </div>
+      <p class="project-pitch">
+        A Kanban-style project management API — boards, tasks, assignees, and activity history, built to be
+        consumed by any frontend.
+      </p>
+      <div class="flow-line">client → DRF → PostgreSQL</div>
+      <div class="project-tags">
+        <span class="tag">Django</span>
+        <span class="tag">DRF</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">GitHub Actions CI</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/YOUR-USERNAME/sprintboard" target="_blank">View source →</a>
+        <span class="disabled">Live demo (add once deployed)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="sec-eyebrow">Writing</div>
+    <h2 class="sec-title">Notes on backend Python</h2>
+    <div class="post-list">
+      <div class="post-row">
+        <span class="ptitle">Why your Django cookiecutter is doing too much</span>
+        <span class="pmeta">LinkedIn ↗</span>
+      </div>
+      <div class="post-row">
+        <span class="ptitle">Async in FastAPI won't save a blocking query</span>
+        <span class="pmeta">LinkedIn ↗</span>
+      </div>
+      <div class="post-row">
+        <span class="ptitle">Docker isn't your dev environment, it's your contract</span>
+        <span class="pmeta">LinkedIn ↗</span>
+      </div>
+    </div>
+    <p class="hint">Replace with your actual post titles and links to LinkedIn.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <div>
+        <h3>Let's talk</h3>
+        <p>Open to junior backend roles — happy to walk through any of the projects above in more detail.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:you@example.com" class="primary">Email me</a>
+        <a href="https://linkedin.com/in/YOUR-USERNAME" target="_blank">LinkedIn</a>
+        <a href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Vinnie — built with Django in the head, HTML in the hands.
+</footer>
+
+</body>
+</html>
