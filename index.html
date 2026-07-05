@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinnie — Backend Developer</title>
+<title>Sahil Sheoran — Backend Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -165,6 +165,13 @@
     background: var(--amber-soft); padding: 4px 10px; border-radius: 12px;
     white-space: nowrap;
   }
+  .project-status.pypi{ color: var(--teal); background: var(--teal-soft); }
+  .project-group-label{
+    font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin: 8px 0 14px; padding-top: 4px;
+  }
+  .project-group-label:first-of-type{ margin-top: 0; }
   .project-pitch{ font-size: 14.5px; color: var(--ink-dim); max-width: 600px; margin-bottom: 16px; }
   .flow-line{
     font-family: var(--mono); font-size: 12px; color: var(--slate);
@@ -189,6 +196,8 @@
   }
   .post-row:first-child{ border-top: 1px solid var(--border-soft); }
   .post-row .ptitle{ font-size: 15px; color: var(--ink); font-weight: 500; }
+  a.ptitle{ transition: color .15s; }
+  a.ptitle:hover{ color: var(--teal); text-decoration: underline; }
   .post-row .pmeta{ font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); white-space: nowrap; }
   .hint{ margin-top: 16px; font-size: 12.5px; color: var(--ink-faint); font-style: italic; }
 
@@ -225,7 +234,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="brand">vinnie<span>.dev</span></div>
+    <div class="brand">Sahil Sheoran<span>.dev</span></div>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -241,19 +250,19 @@
       <div class="eyebrow">Open to Junior Django Developer roles</div>
       <h1 class="headline">I build backend systems that stay <em>calm</em> under load.</h1>
       <p class="sub">
-        Backend Developer at <strong>Weboapp Discovery Pvt. Ltd.</strong>, New Delhi — 10 months shipping
+        Backend Developer at <strong>Weboapp Discovery Pvt. Ltd.</strong>, New Delhi — 11 months shipping
         production APIs, background job pipelines, and real-time features with Django.
       </p>
       <div class="cta-row">
         <a href="#projects" class="btn-primary">View projects</a>
-        <a href="#" class="btn-secondary">Download résumé</a>
+        <a href="Sahil_Sheoran_Resume.pdf" class="btn-secondary" download>Download résumé</a>
       </div>
       <div class="meta-row">
-        <a href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a>
+        <a href="https://github.com/Sahil-coder50" target="_blank">GitHub</a>
         <span class="sep">·</span>
-        <a href="https://linkedin.com/in/YOUR-USERNAME" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sahil-sheoran-py" target="_blank">LinkedIn</a>
         <span class="sep">·</span>
-        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sahilsheoran24@gmail.com" target="_blank">sahilsheoran24@gmail.com</a>
         <span class="sep">·</span>
         <span>New Delhi, India</span>
       </div>
@@ -261,8 +270,8 @@
 
     <div class="status-card">
       <div class="status-card-head">
-        <span class="label">system.status</span>
-        <span class="time">what I work with daily</span>
+        <span class="label">System</span>
+        <span class="time">What I work with daily</span>
       </div>
 
       <div class="status-row">
@@ -286,7 +295,6 @@
         <span class="status-tag">operational</span>
       </div>
 
-      <div class="status-caption">A snapshot of the stack I use in production — not live monitoring data.</div>
     </div>
   </div>
 </header>
@@ -298,12 +306,12 @@
       <h2 class="sec-title">Backend by choice</h2>
       <p>
         I like the parts of a product that don't show up in a demo — <strong>queueing, caching, and things not
-        failing silently at 2am.</strong> Over the last 10 months I've worked across three production systems: a CRM
+        failing silently at 2am.</strong> Over the last 11 months I've worked across three production systems: a CRM
         backend, a ticket management platform, and a project management tool.
       </p>
       <p>
-        The projects on this page are rebuilt, open-source versions of that production work — same architecture
-        decisions, documented and testable.
+        Outside work, I package the pieces I keep rebuilding — auth, RBAC, file uploads, project structure — into
+        open-source tools published on PyPI and GitHub, so the next project starts closer to done.
       </p>
     </div>
     <div class="stack-list">
@@ -311,7 +319,7 @@
       <div class="stack-cat"><span class="k">data</span><span class="v">PostgreSQL, Redis</span></div>
       <div class="stack-cat"><span class="k">async</span><span class="v">Celery, Apache Kafka</span></div>
       <div class="stack-cat"><span class="k">realtime</span><span class="v">Django Channels, WebSockets</span></div>
-      <div class="stack-cat"><span class="k">infra</span><span class="v">Docker, GitHub Actions</span></div>
+      <div class="stack-cat"><span class="k">infra</span><span class="v">Docker, GitHub</span></div>
       <div class="stack-cat"><span class="k">testing</span><span class="v">pytest</span></div>
     </div>
   </div>
@@ -319,72 +327,98 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="sec-eyebrow">Projects</div>
-    <h2 class="sec-title">Selected work</h2>
+    <div class="sec-eyebrow">Open source</div>
+    <h2 class="sec-title">Packages and templates I've shipped</h2>
+
+    <div class="project-group-label">Published packages</div>
 
     <div class="project-card">
       <div class="project-top">
-        <span class="project-title">ConnectCRM API</span>
-        <span class="project-status">not yet deployed</span>
+        <span class="project-title">auth-drf</span>
+        <span class="project-status pypi">pip install auth-drf</span>
       </div>
       <p class="project-pitch">
-        A multi-tenant CRM backend for managing leads, contacts, and deal pipelines, with role-based access
-        control and async notifications so the API stays fast under load.
+        A Django REST Framework package that drops in JWT authentication and role-based access control —
+        registration, login, Google OAuth, token refresh, and a role/permission API — without writing auth
+        boilerplate from scratch on every project.
       </p>
-      <div class="flow-line">client → DRF → Celery → Redis → Kafka (activity events)</div>
+      <div class="flow-line">register → login → JWT + refresh token → RBAC-checked endpoints</div>
       <div class="project-tags">
         <span class="tag">Django REST Framework</span>
-        <span class="tag">PostgreSQL</span>
+        <span class="tag">JWT / SimpleJWT</span>
+        <span class="tag">Google OAuth</span>
+        <span class="tag">RBAC</span>
+      </div>
+      <div class="project-links">
+        <a href="https://pypi.org/project/auth-drf/" target="_blank">View on PyPI →</a>
+        <a href="https://github.com/Sahil-coder50/drf_auth" target="_blank">Source →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-title">image-upload</span>
+        <span class="project-status pypi">pip install image-upload</span>
+      </div>
+      <p class="project-pitch">
+        A lightweight FastAPI package for handling file uploads — async saving, MIME/size validation, and
+        Pydantic-based absolute URL generation for stored files, so upload handling doesn't get rewritten in
+        every service.
+      </p>
+      <div class="flow-line">UploadFile → validate → save async → absolute URL via Pydantic</div>
+      <div class="project-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">Pydantic v2</span>
+        <span class="tag">aiofiles</span>
+        <span class="tag">async I/O</span>
+      </div>
+      <div class="project-links">
+        <a href="https://pypi.org/project/image-upload/" target="_blank">View on PyPI →</a>
+        <a href="https://github.com/Sahil-coder50/image_upload" target="_blank">Source →</a>
+      </div>
+    </div>
+
+    <div class="project-group-label">Project templates</div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-title">drf-project-template</span>
+        <span class="project-status">cookiecutter</span>
+      </div>
+      <p class="project-pitch">
+        A ready-to-clone Django REST Framework project structure — pagination and exception handling already
+        written, Redis and Celery pre-configured, Docker set up to run the container, and settings split into
+        base / local / production so a new backend project doesn't start from a blank folder.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Django REST Framework</span>
         <span class="tag">Celery + Redis</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Split settings</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Sahil-coder50/drf-project-template" target="_blank">View source →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-title">fastapi-project-template</span>
+        <span class="project-status">cookiecutter</span>
+      </div>
+      <p class="project-pitch">
+        A FastAPI starting point with Alembic migrations, structured exceptions, logging, and a consistent
+        response format pre-wired, plus a working repo/service/router/schema example for the first resource so
+        the pattern is obvious from the first commit.
+      </p>
+      <div class="project-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">Alembic</span>
+        <span class="tag">Repo / Service pattern</span>
         <span class="tag">Docker</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/YOUR-USERNAME/connect-crm-api" target="_blank">View source →</a>
-        <span class="disabled">Live demo (add once deployed)</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <span class="project-title">DeskFlow</span>
-        <span class="project-status">not yet deployed</span>
-      </div>
-      <p class="project-pitch">
-        A support ticket system with live status updates over WebSockets — agents see changes the moment they
-        happen instead of polling for them.
-      </p>
-      <div class="flow-line">client ⇄ Channels (WS) → Celery (SLA reminders) → Redis</div>
-      <div class="project-tags">
-        <span class="tag">Django Channels</span>
-        <span class="tag">DRF</span>
-        <span class="tag">Celery</span>
-        <span class="tag">pytest</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/YOUR-USERNAME/deskflow" target="_blank">View source →</a>
-        <span class="disabled">Live demo (add once deployed)</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <span class="project-title">SprintBoard</span>
-        <span class="project-status">not yet deployed</span>
-      </div>
-      <p class="project-pitch">
-        A Kanban-style project management API — boards, tasks, assignees, and activity history, built to be
-        consumed by any frontend.
-      </p>
-      <div class="flow-line">client → DRF → PostgreSQL</div>
-      <div class="project-tags">
-        <span class="tag">Django</span>
-        <span class="tag">DRF</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">GitHub Actions CI</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/YOUR-USERNAME/sprintboard" target="_blank">View source →</a>
-        <span class="disabled">Live demo (add once deployed)</span>
+        <a href="https://github.com/Sahil-coder50/fastapi-project-template" target="_blank">View source →</a>
       </div>
     </div>
   </div>
@@ -396,20 +430,19 @@
     <h2 class="sec-title">Notes on backend Python</h2>
     <div class="post-list">
       <div class="post-row">
-        <span class="ptitle">Why your Django cookiecutter is doing too much</span>
+        <a href="https://medium.com/@sahilsheoran24/production-ready-django-rest-framework-with-docker-nginx-gunicorn-daphne-redis-and-celery-2709f2a44340" target="_blank" class="ptitle">Production-Ready Django REST Framework with Docker, Nginx, Gunicorn, Daphne, Redis and Celery</a>
+        <span class="pmeta">Medium · 9 min read ↗</span>
+      </div>
+      <div class="post-row">
+        <a href="https://www.linkedin.com/posts/sahil-sheoran-py_how-backend-systems-actually-scalesync-vs-ugcPost-7452207644313829377-YwN3" target="_blank" class="ptitle">How backend systems actually scale: sync vs. async</a>
         <span class="pmeta">LinkedIn ↗</span>
       </div>
       <div class="post-row">
-        <span class="ptitle">Async in FastAPI won't save a blocking query</span>
-        <span class="pmeta">LinkedIn ↗</span>
-      </div>
-      <div class="post-row">
-        <span class="ptitle">Docker isn't your dev environment, it's your contract</span>
+        <a href="https://www.linkedin.com/posts/sahil-sheoran-py_docker-django-python-share-7466764513321639937-PVSd" target="_blank" class="ptitle">Docker, Django, Python — the production deployment breakdown</a>
         <span class="pmeta">LinkedIn ↗</span>
       </div>
     </div>
-    <p class="hint">Replace with your actual post titles and links to LinkedIn.</p>
-  </div>
+</div>
 </section>
 
 <section id="contact">
@@ -420,16 +453,16 @@
         <p>Open to junior backend roles — happy to walk through any of the projects above in more detail.</p>
       </div>
       <div class="contact-links">
-        <a href="mailto:you@example.com" class="primary">Email me</a>
-        <a href="https://linkedin.com/in/YOUR-USERNAME" target="_blank">LinkedIn</a>
-        <a href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sahilsheoran24@gmail.com" class="primary" target="_blank">Email me</a>
+        <a href="https://www.linkedin.com/in/sahil-sheoran-py" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Sahil-coder50" target="_blank">GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Vinnie — built with Django in the head, HTML in the hands.
+  © 2026 Sahil Sheoran — built with Django in the head, HTML in the hands.
 </footer>
 
 </body>
