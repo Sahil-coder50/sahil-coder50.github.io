@@ -27,6 +27,8 @@ Plain HTML, CSS, and Google Fonts (Fraunces, Inter, JetBrains Mono). No framewor
 ├── assets/
 │   ├── css/
 │   │   └── styles.css
+│   ├── js/
+│   │   └── main.js
 │   └── resume/
 │       └── Sahil_Sheoran_Resume.pdf
 └── README.md
